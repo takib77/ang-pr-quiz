@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-success">
-    <a class="navbar-brand" [routerLink]="'/'">Angular Quiz</a>
+    <a class="navbar-brand" [routerLink]="'/'">
+        <img src="favicon.ico" alt="icon">
+        Angular Quiz</a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
         aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,9 +13,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="'/admin'">Admin</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="'/quiz'">Quiz</a>
             </li>
         </ul>
     </div>

@@ -9,7 +9,7 @@ import { QuizComponent } from './pages/quiz/quiz.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'quiz', component: QuizComponent },
+  { path: 'quiz/:id', component: QuizComponent },
   { path: 'question/:id', component: QuestionEditorComponent },
   { path: 'admin/quiz/:id', component: QuizEditorComponent },
 ];

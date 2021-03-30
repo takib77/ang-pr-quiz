@@ -1,1 +1,37 @@
-<p>admin works!</p>
+<div class="col-6 offset-3 py-3">
+    <h1 class="py-3 text-center">List of Quizzes</h1>
+    <button class="btn btn-success btn-block">
+        <i class="fa fa-plus"> Add new Quiz</i>
+    </button>
+</div>
+<table class="table table-striped bg-warning">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Question</th>
+            <th>Active</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let quiz of quizList | async">
+            <td>{{ quiz.id }}</td>
+            <td>{{ quiz.title }}</td>
+            <td>{{ quiz.description }}</td>
+            <td>{{ quiz.question }}</td>
+            <td>{{ quiz.active }}</td>
+            <td>
+                <div class="btn-group">
+                    <button class="btn btn-info">
+                        <i class="fa fa-refresh"></i>
+                    </button>
+                    <button (click)="delQuiz(quiz)" class="btn btn-danger">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

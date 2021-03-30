@@ -1,0 +1,27 @@
+<div class="col-8 offset-2 bg-warning py-3">
+    <form #quizForm="ngForm" (ngSubmit)="onSubmit(quizForm, quiz)">
+        <div class="form-group my-5">
+            <label>#{{ quiz.id }}</label>
+        </div>
+        <div class="form-group my-5">
+            <label for="title">TITLE</label>
+            <input name="title" [(ngModel)]="quiz.title" type="text" class="form-control" required>
+        </div>
+        <div class="form-group my-5">
+            <label for="description">DESCRIPTION</label>
+            <input name="description" [(ngModel)]="quiz.description" type="text" class="form-control" required>
+        </div>
+        <div class="form-group my-5">
+            <label for="question">QUESTION</label>
+            <input name="question" [(ngModel)]="quiz.question" type="text" class="form-control" required>
+        </div>
+        <div class="custom-control custom-checkbox my-5">
+            <input type="checkbox" name="active" [(ngModel)]="quiz.active" class="custom-control-input"
+                id="customCheck">
+            <label class="custom-control-label" for="customCheck">ACTIVE</label>
+        </div>
+        <button [disabled]="quizForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
+            <i class="fa fa-save"></i>
+        </button>
+    </form>
+</div>

@@ -36,10 +36,10 @@ export class QuizEditorComponent implements OnInit {
   onSubmit(form: NgForm, quiz: Quiz): void {
     if (quiz.id === 0) {
       this.quizservice.createQuiz(quiz).subscribe(() => { });
-      this.router.navigate([''])
+      this.router.navigate(['/admin'])
     } else {
       this.quizservice.updateQuiz(quiz).subscribe(() => { });
-      this.router.navigate(['']);
+      this.router.navigate(['/admin']);
     }
   }
 

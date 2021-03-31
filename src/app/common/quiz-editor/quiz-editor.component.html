@@ -1,4 +1,7 @@
 <div class="col-8 offset-2 bg-warning mt-3 py-3">
+    <button routerLink='/admin' class="btn btn-info btn-block btn-lg">
+        <i class="fa fa-arrow-circle-left"> Back to Admin Page</i>
+    </button>
     <form #quizForm="ngForm" (ngSubmit)="onSubmit(quizForm, quiz)">
         <div class="form-group my-5">
             <label>#{{ quiz.id }}</label>
@@ -25,10 +28,10 @@
         </div>
         <div *ngFor="let quest of quests | async" class="form-group my-1">
             <label for="question">{{quest.id}}. QUESTION</label>
-            <input name="question" [(ngModel)]="quest.question" type="text" class="form-control"
-                required>{{quest.question}}
+            <!-- <input name="question" [(ngModel)]="quest.question" type="text" class="form-control" required> -->
+            {{quest.question}}
         </div>
-        <button class="btn btn-primary btn-lg my-5" [routerLink]="'/question/quiz.id'">
+        <button class="btn btn-primary btn-lg my-5" [routerLink]="'/question/'+quiz.id">
             <i class="fa fa-question"> New Question</i>
         </button>
         <button [disabled]="quizForm.invalid" type="submit" class="btn btn-success btn-block btn-lg">

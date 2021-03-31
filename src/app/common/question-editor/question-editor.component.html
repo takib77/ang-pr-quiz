@@ -1,4 +1,7 @@
 <div class="col-8 offset-2 bg-warning mt-3 py-3">
+    <button [routerLink]="'/admin/quiz/'+question.id" class="btn btn-info btn-block btn-lg">
+        <i class="fa fa-arrow-circle-left"> Back to Quiz-Editor Page</i>
+    </button>
     <form #questionForm="ngForm" (ngSubmit)="onSubmit(questionForm, question)">
         <div class="form-group my-5">
             <label>#{{ question.id }}</label>

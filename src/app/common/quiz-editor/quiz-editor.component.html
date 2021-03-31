@@ -23,7 +23,12 @@
                 id="customCheck">
             <label class="custom-control-label" for="customCheck">ACTIVE</label>
         </div>
-        <button class="btn btn-primary btn-lg mb-5" [routerLink]="'/question/quiz.id'">
+        <div *ngFor="let quest of quests | async" class="form-group my-1">
+            <label for="question">{{quest.id}}. QUESTION</label>
+            <input name="question" [(ngModel)]="quest.question" type="text" class="form-control"
+                required>{{quest.question}}
+        </div>
+        <button class="btn btn-primary btn-lg my-5" [routerLink]="'/question/quiz.id'">
             <i class="fa fa-question"> New Question</i>
         </button>
         <button [disabled]="quizForm.invalid" type="submit" class="btn btn-success btn-block btn-lg">

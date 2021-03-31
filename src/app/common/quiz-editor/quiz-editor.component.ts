@@ -3,6 +3,9 @@ import { Quiz } from 'src/app/model/quiz';
 import { QuizService } from 'src/app/service/quiz-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { QuestionService } from 'src/app/service/question-service';
+import { Observable } from 'rxjs';
+import { Question } from 'src/app/model/question';
 
 @Component({
   selector: 'app-quiz-editor',
@@ -12,14 +15,17 @@ import { NgForm } from '@angular/forms';
 export class QuizEditorComponent implements OnInit {
 
   quiz: Quiz = new Quiz();
+  quests: Observable<Question[]> | undefined = this.questionservice.questionList$
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private quizservice: QuizService
+    private quizservice: QuizService,
+    private questionservice: QuestionService
   ) { }
 
   ngOnInit(): void {
+    this.questionservice.getAllQuestion();
     this.activatedRoute.params.subscribe(
       params => {
         if (params.id == 0) {

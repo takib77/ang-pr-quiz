@@ -1,5 +1,6 @@
 <div class="col-6 offset-3 py-3">
     <h1 class="py-3 text-center">List of Quizzes</h1>
+    <input [formControl]="phraseControl" type="text" class="form-control border-warning my-3" placeholder="Search...">
     <button class="btn btn-success btn-block" [routerLink]="'quiz/'+0">
         <i class="fa fa-plus"> Add new Quiz</i>
     </button>
@@ -7,20 +8,17 @@
 <table class="table table-striped bg-warning">
     <thead>
         <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Question</th>
-            <th>Active</th>
-            <th></th>
+            <th class="column" (click)="onColumnSelect('id')">#</th>
+            <th class="column" (click)="onColumnSelect('title')">Title</th>
+            <th class="column" (click)="onColumnSelect('description')">Description</th>
+            <th colspan="2" class="column" (click)="onColumnSelect('active')">Active</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let quiz of quizList | async">
+        <tr *ngFor="let quiz of quizList | async | filter:phrase | sorter: columnKey:direction">
             <td>{{ quiz.id }}</td>
             <td>{{ quiz.title }}</td>
             <td>{{ quiz.description }}</td>
-            <td>{{ quiz.question }}</td>
             <td>{{ quiz.active }}</td>
             <td>
                 <div class="btn-group">

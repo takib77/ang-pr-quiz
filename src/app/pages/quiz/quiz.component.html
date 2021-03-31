@@ -1,6 +1,15 @@
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">quiz.id}}. quiz.title}}</h4>
-        <p class="card-text">quiz.description}}</p>
+<div class="col-8 offset-2 bg-warning mt-3 py-3">
+    <div class="form-group">
+        <h6 class="text-right">Points: {{ points }}</h6>
     </div>
+    <div class="form-group mb-5">
+        <h1 class="text-center">{{ quiz.id }}. {{ quiz.title }}</h1>
+    </div>
+    <div class="form-group my-5">
+        <h2 for="question">QUESTION:</h2>
+        <p>{{ quiz.question }}</p>
+    </div>
+    <button (click)="calculator(2)" class="btn btn-success btn-block btn-lg">
+        <i class="fa fa-arrow-circle-right"> Next Question</i>
+    </button>
 </div>

@@ -1,1 +1,39 @@
-<p>question-editor works!</p>
+<div class="col-8 offset-2 bg-warning mt-3 py-3">
+    <form #questionForm="ngForm" (ngSubmit)="onSubmit(questionForm, question)">
+        <div class="form-group my-5">
+            <label>#{{ question.id }}</label>
+        </div>
+        <div class="form-group my-5">
+            <label for="question">QUESTION</label>
+            <input name="question" [(ngModel)]="question.question" type="text" class="form-control" required
+                pattern=".{4,20}">
+            <small [hidden]="questionForm.controls.question?.valid" class="form-invalid text-danger">
+                Wrong data!
+            </small>
+        </div>
+        <div class="form-group my-5">
+            <label for="answers">ANSWERS</label>
+            <input name="answers" [(ngModel)]="question.answers" type="text" class="form-control" required
+                pattern=".{4,100}">
+            <small [hidden]="questionForm.controls.answers?.valid" class="form-invalid text-danger">
+                Wrong data!
+            </small>
+        </div>
+        <div class="form-group my-5">
+            <label for="points">POINTS</label>
+            <input name="points" [(ngModel)]="question.points" type="number" class="form-control" required
+                pattern="[0-9]{1,4}">
+            <small [hidden]="questionForm.controls.points?.valid" class="form-invalid text-danger">
+                Wrong data!
+            </small>
+        </div>
+        <div class="custom-control custom-checkbox my-5">
+            <input type="checkbox" name="active" [(ngModel)]="question.active" class="custom-control-input"
+                id="customCheck">
+            <label class="custom-control-label" for="customCheck">ACTIVE</label>
+        </div>
+        <button [disabled]="questionForm.invalid" type="submit" class="btn btn-success btn-block btn-lg">
+            <i class="fa fa-save"></i>
+        </button>
+    </form>
+</div>

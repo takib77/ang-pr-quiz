@@ -10,7 +10,6 @@ import { QuizService } from 'src/app/service/quiz-service';
 })
 export class HomeComponent implements OnInit {
 
-  quiz = new Quiz();
   quizList: Observable<Quiz[]> = this.quizservice.quizList$;
 
   constructor(

@@ -1,8 +1,8 @@
 <div class="row justify-content-center">
-    <div *ngFor="let quizdata of quizList | async" class="card w-25 m-3" [routerLink]="'quiz/'+quizdata.id">
+    <div *ngFor="let quiz of quizList | async" class="card w-25 m-3" [routerLink]="'quiz/'+quiz.id">
         <div class="card-body">
-            <h4 class="card-title text-primary">{{quizdata.id}}. {{quizdata.title}}</h4>
-            <p class="card-text text-success">{{quizdata.description}}</p>
+            <h4 class="card-title text-primary">{{quiz.id}}. {{quiz.title}}</h4>
+            <p class="card-text text-success">{{quiz.description}}</p>
         </div>
     </div>
 </div>

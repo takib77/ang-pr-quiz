@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from 'src/app/model/quiz';
-import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from 'src/app/service/quiz-service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 @Component({

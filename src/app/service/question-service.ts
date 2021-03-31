@@ -1,10 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Answer } from '../model/answer';
+import { Question } from '../model/question';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
+
+  dataSource: string = 'http://localhost:3000/questions';
+  questionList$: BehaviorSubject<Question[]> = new BehaviorSubject<Question[]>([]);
 
   answers: Answer[] = [
     {
@@ -110,5 +116,30 @@ export class QuestionService {
     }
   ]
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  getAllQuestion(): void {
+    this.http.get<Question[]>(this.dataSource).subscribe(
+      questions => this.questionList$.next(questions)
+    );
+  }
+
+  getQuestion(id: number): Observable<Question> {
+    return this.http.get<Question>(`${this.dataSource}/${id}`);
+  }
+
+  createQuestion(question: Question): Observable<Question> {
+    return this.http.post<Question>(this.dataSource, question);
+  }
+
+  updateQuestion(question: Question): Observable<Question> {
+    return this.http.patch<Question>(`${this.dataSource}/${question.id}`, question);
+  }
+
+  removeQuestion(question: Question): Observable<Question> {
+    return this.http.delete<Question>(`${this.dataSource}/${question.id}`);
+  }
+
 }

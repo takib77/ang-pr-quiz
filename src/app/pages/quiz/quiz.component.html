@@ -9,7 +9,26 @@
         <h2 for="question">QUESTION:</h2>
         <p>{{ quiz.question }}</p>
     </div>
-    <button (click)="calculator(2)" class="btn btn-success btn-block btn-lg">
+    <div class="form-group my-5">
+        <h2 for="answers">ANSWERS:</h2>
+        <div>
+            <input class="mx-1" type="radio" name="answers" id="ans1">
+            <label for="ans1">{{ quiz.question.answers }}1</label>
+        </div>
+        <div>
+            <input class="mx-1" type="radio" name="answers" id="ans2">
+            <label for="ans2">{{ quiz.question.answers }}2</label>
+        </div>
+        <div>
+            <input class="mx-1" type="radio" name="answers" id="ans3">
+            <label for="ans3">{{ quiz.question.answers }}3</label>
+        </div>
+        <div>
+            <input class="mx-1" type="radio" name="answers" id="ans4">
+            <label for="ans4">{{ quiz.question.answers }}4</label>
+        </div>
+    </div>
+    <button (click)="onNextClick()" class="btn btn-success btn-block btn-lg">
         <i class="fa fa-arrow-circle-right"> Next Question</i>
     </button>
 </div>

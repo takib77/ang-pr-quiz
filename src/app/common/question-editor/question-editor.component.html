@@ -9,7 +9,7 @@
         <div class="form-group my-5">
             <label for="question">QUESTION</label>
             <input name="question" [(ngModel)]="question.question" type="text" class="form-control" required
-                pattern=".{4,20}">
+                pattern=".{4,100}">
             <small [hidden]="questionForm.controls.question?.valid" class="form-invalid text-danger">
                 Wrong data!
             </small>

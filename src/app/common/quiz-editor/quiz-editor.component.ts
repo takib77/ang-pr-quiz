@@ -15,7 +15,9 @@ import { Question } from 'src/app/model/question';
 export class QuizEditorComponent implements OnInit {
 
   quiz: Quiz = new Quiz();
-  quests: Observable<Question[]> | undefined = this.questionservice.questionList$
+  question: Question = new Question();
+  quests: Observable<Question[]> | undefined = this.questionservice.questionList$;
+  // key: number = this.quiz.id;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -47,6 +49,14 @@ export class QuizEditorComponent implements OnInit {
       this.quizservice.updateQuiz(quiz).subscribe(() => { });
       this.router.navigate(['/admin']);
     }
+  }
+
+  delQuestion(question: Question): void {
+    if (!confirm('Are you sure to delete?'))
+      return;
+    this.questionservice.removeQuestion(question).subscribe(
+      () => (this.questionservice.getAllQuestion())
+    )
   }
 
 }

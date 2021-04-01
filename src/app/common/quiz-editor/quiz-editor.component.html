@@ -21,19 +21,43 @@
                 Wrong data!
             </small>
         </div>
+        <div class="form-group my-1">
+            <label for="question">QUESTIONS</label>
+            <table class="table table-striped bg-light">
+                <tbody>
+                    <tr *ngFor="let quest of quests | async">
+                        <td>
+                            <label for="question">{{quest.id+'.'}}</label>
+                            <!-- <input name="question" [(ngModel)]="quest.question[key]" type="text" class="form-control"
+                                required> -->
+                            {{quest.question}}
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-info" [routerLink]="'/question/'+quest.id">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                                <button (click)="delQuestion(quest)" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button class="btn btn-primary btn-block btn-lg" [routerLink]="'/question/'+0">
+                                <i class="fa fa-question"> New Question</i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="custom-control custom-checkbox my-5">
             <input type="checkbox" name="active" [(ngModel)]="quiz.active" class="custom-control-input"
                 id="customCheck">
             <label class="custom-control-label" for="customCheck">ACTIVE</label>
         </div>
-        <div *ngFor="let quest of quests | async" class="form-group my-1">
-            <label for="question">{{quest.id}}. QUESTION</label>
-            <!-- <input name="question" [(ngModel)]="quest.question" type="text" class="form-control" required> -->
-            {{quest.question}}
-        </div>
-        <button class="btn btn-primary btn-lg my-5" [routerLink]="'/question/'+quiz.id">
-            <i class="fa fa-question"> New Question</i>
-        </button>
         <button [disabled]="quizForm.invalid" type="submit" class="btn btn-success btn-block btn-lg">
             <i class="fa fa-save"></i>
         </button>

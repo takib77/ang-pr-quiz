@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Quiz } from 'src/app/model/quiz';
 import { QuizService } from 'src/app/service/quiz-service';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-quiz',
@@ -12,7 +13,7 @@ import { QuizService } from 'src/app/service/quiz-service';
 export class QuizComponent implements OnInit {
 
   quiz: Quiz = new Quiz();
-  quizList: Observable<Quiz[]> = this.quizservice.quizList$;
+  quizList: Observable<Quiz[]> | [] = this.quizservice.quizList$;
   points: number = 0;
 
   constructor(
@@ -35,8 +36,8 @@ export class QuizComponent implements OnInit {
       })
   }
 
-  calculator(point: number): void {
-    this.points = this.points + point;
+  onNextClick(): void {
+    this.points = this.points + this.quiz.question.points;
   }
 
 }

@@ -9,7 +9,7 @@
         <h2 for="question">QUESTION:</h2>
         <p>{{ quiz.question }}</p>
     </div>
-    <div class="form-group my-5">
+    <!-- <div class="form-group my-5">
         <h2 for="answers">ANSWERS:</h2>
         <div>
             <input class="mx-1" type="radio" name="answers" id="ans1">
@@ -27,7 +27,7 @@
             <input class="mx-1" type="radio" name="answers" id="ans4">
             <label for="ans4">{{ quiz.question.answers }}4</label>
         </div>
-    </div>
+    </div> -->
     <button (click)="onNextClick()" class="btn btn-success btn-block btn-lg">
         <i class="fa fa-arrow-circle-right"> Next Question</i>
     </button>
